@@ -1,0 +1,227 @@
+@use 'sass:map';
+@use './../abstract' as *;
+
+header {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 2;
+}
+
+.nav {
+  &-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    align-items: center;
+    padding: 19px 0 11px 0;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+
+      a {
+        transition: color ease 0.5s;
+        color: #0f0f0f;
+
+        &:hover {
+          color: #006699;
+        }
+      }
+
+      li:last-child {
+        margin-left: 30px;
+        @include text-medium();
+        display: flex;
+        align-items: flex-end;
+
+        img {
+          margin-bottom: 7px;
+        }
+      }
+    }
+  }
+
+  &-bottom {
+    display: flex;
+    justify-content: space-between;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+
+      li {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 19px;
+        text-transform: capitalize;
+        position: relative;
+
+        &:after {
+          content: url(./../../img/icons/drop-down.svg);
+          position: absolute;
+          bottom: 0;
+          right: -8px;
+        }
+
+        a {
+          color: #0f0f0f;
+          transition: color ease 0.5s;
+
+          &:hover {
+            color: #006699;
+          }
+        }
+      }
+    }
+
+    input {
+      border: none;
+      border-left: 0.5px solid rgba(0, 0, 0, 0.3);
+      padding: 22px;
+      font-size: 12px;
+      background-image: url(./../../img/icons/search.svg);
+      background-repeat: no-repeat;
+      background-position: right 20px center;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100000000;
+  .overlayDoor {
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      background: #fff;
+      transition: 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+      transition-delay: 0.8s;
+    }
+    &:before {
+      left: 0;
+    }
+    &:after {
+      right: 0;
+    }
+  }
+  &.loaded {
+    .overlayDoor {
+      &:before {
+        left: -50%;
+      }
+      &:after {
+        right: -50%;
+      }
+    }
+    .overlayContent {
+      opacity: 0;
+      margin-top: -15px;
+    }
+  }
+  .overlayContent {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+    .skip {
+      display: block;
+      width: 130px;
+      text-align: center;
+      margin: 50px auto 0;
+      cursor: pointer;
+      color: #fff;
+      font-family: 'Nunito';
+      font-weight: 700;
+      padding: 12px 0;
+      border: 2px solid #fff;
+      border-radius: 3px;
+      transition: 0.2s ease;
+      &:hover {
+        background: #ddd;
+        color: #444;
+        border-color: #ddd;
+      }
+    }
+  }
+}
+
+$loader-ring-size: 200px;
+$loader-ring-border-size: 4px;
+
+.loader-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: $loader-ring-size/-2 0 0 $loader-ring-size/-2;
+  width: $loader-ring-size;
+  height: $loader-ring-size;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8e8e8;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  // transition: all 0.3s linear;
+  box-shadow: 7px 7px 15px #bbcfda, -4px -4px 13px #ffffff,
+    inset 4px 4px 8px rgba(209, 217, 230, 0.35),
+    inset -8px -8px 8px rgba(255, 255, 255, 0.3);
+}
+
+.loader-ring-light {
+  width: $loader-ring-size + 10;
+  height: $loader-ring-size + 10;
+  border-radius: $loader-ring-size;
+  box-shadow: 0 $loader-ring-border-size 0 #ffffff inset;
+  animation: rotate-360 2s linear infinite;
+}
+
+@keyframes rotate-360 {
+  0% {
+    -webkit-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -o-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.loader-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}

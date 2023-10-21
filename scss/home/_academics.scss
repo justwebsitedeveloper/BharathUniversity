@@ -1,0 +1,199 @@
+@use 'sass:map';
+@use './../abstract' as *;
+
+@-webkit-keyframes arrow {
+	0%, 20%, 50%, 80%, 100% {-webkit-transform: translateX(0);}	
+	40% {-webkit-transform: translateX(-30px);}
+	60% {-webkit-transform: translateX(-15px);}
+}
+ 
+@-moz-keyframes arrow {
+	0%, 20%, 50%, 80%, 100% {-moz-transform: translateX(0);}
+	40% {-moz-transform: translateX(-30px);}
+	60% {-moz-transform: translateX(-15px);}
+}
+ 
+@-o-keyframes arrow {
+	0%, 20%, 50%, 80%, 100% {-o-transform: translateX(0);}
+	40% {-o-transform: translateX(-30px);}
+	60% {-o-transform: translateX(-15px);}
+}
+@keyframes arrow {
+	0%, 20%, 50%, 80%, 100% {transform: translateX(0);}
+	40% {transform: translateX(-30px);}
+	60% {transform: translateX(-15px);}
+}
+
+.rnd {
+    padding: 120px 0;
+  
+    &__content {
+      display: flex;
+      align-items: center;
+
+      &-right{
+        z-index: -1;
+      }
+  
+      &-left {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+  
+        h3 {
+          @include heading();
+          font-size: 48px;
+          line-height: 60px;
+          letter-spacing: 0.01em;
+          margin-bottom: 24px;
+        }
+  
+        p {
+          font-size: 16px;
+          line-height: 26px;
+          @include text();
+          max-width: 555px;
+          margin-bottom: 45px;
+        }
+      }
+      &-right {
+        min-width: 472px;
+      }
+    }
+  
+    &__more {
+      background: #ffffff;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+      display: flex;
+      justify-content: space-between;
+      width: 400px;
+      align-items: center;
+      padding: 40px;
+      margin-left: auto;
+      transform: translateX(66px);
+      transition: background-color ease .5s;
+  
+      p {
+        @include text-medium();
+        margin: 0;
+        line-height: 1;
+      }
+  
+      &:hover {
+
+        background-color: #006699;
+  
+        p{
+          color: #fff;
+        }
+  
+        svg {
+          animation: arrow 2s infinite;
+          -webkit-animation: arrow 2s infinite;
+          -moz-animation: arrow 2s infinite;
+          -o-animation: arrow 2s infinite;
+  
+          path, line{
+            stroke: #fff !important;
+          }
+        }
+      }
+    }
+  }
+
+.academics {
+  padding: 107px 0 96px 0;
+  background-color: #fafafa;
+
+  h3 {
+    text-align: center;
+    letter-spacing: 0.01em;
+    @include heading();
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__item {
+    text-align: center;
+    @include text-medium();
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    background-color: #fafafa;
+
+    @supports not (aspect-ratio: 1 / 1) {
+      div::before {
+        float: left;
+        padding-top: 100%;
+        content: '';
+      }
+
+      div::after {
+        display: block;
+        content: '';
+        clear: both;
+      }
+    }
+
+    &:first-child {
+      border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+    }
+    &:nth-child(2) {
+      border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+    }
+    &:nth-child(3) {
+      border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+    }
+    &:nth-child(4) {
+      border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+    }
+
+    p {
+      height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+    }
+
+    img {
+      width: 112px;
+      height: auto;
+      transition: all ease 0.5s;
+      mix-blend-mode: luminosity;
+    }
+
+    svg{
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    &:hover {
+      background-color: #fff;
+
+      img {
+        mix-blend-mode: initial;
+      }
+
+      p{
+          height: 30px;
+          margin: 30px 0;
+      }
+
+      svg{
+        opacity: 1;
+        animation: arrow 2s infinite;
+        -webkit-animation: arrow 2s infinite;
+        -moz-animation: arrow 2s infinite;
+        -o-animation: arrow 2s infinite;
+      }
+    }
+  }
+}

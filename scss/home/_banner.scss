@@ -1,0 +1,114 @@
+@use 'sass:map';
+@use './../abstract' as *;
+.banner {
+  position: relative;
+  background-color: black;
+  height: calc(100vh - 133.39px);
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.banner .container {
+  position: relative;
+  z-index: 2;
+}
+
+.banner .banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+@media (pointer: coarse) and (hover: none) {
+  .banner {
+    background: url('./../../img/baner-image@2x.jpg') no-repeat center center
+      scroll;
+  }
+
+  .banner video {
+    display: none;
+  }
+}
+
+.banner-content {
+  position: relative;
+  padding: 0 100px;
+  display: flex;
+  gap: 50px;
+
+  &__left {
+    flex-grow: 1;
+
+    p {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 0;
+    }
+
+    h2 {
+      @include heading();
+      font-size: 60px;
+      line-height: 80px;
+      letter-spacing: 0.01em;
+      text-transform: capitalize;
+    }
+
+    span {
+      display: block;
+      height: 1px;
+      background-color: #fff;
+    }
+  }
+
+  &__right {
+    height: 110px;
+    width: 110px;
+    position: relative;
+    border: solid 1px #fff;
+    border-radius: 50%;
+    margin-top: 55px;
+    background-color: transparent;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    transform-origin: 0;
+    transform: scale(1);
+
+    &:hover {
+      transform: scale(1.2) !important;
+    }
+
+    p {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 17px;
+      min-width: 100px;
+      text-align: center;
+    }
+  }
+}

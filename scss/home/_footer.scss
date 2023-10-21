@@ -1,0 +1,188 @@
+@use 'sass:map';
+@use './../abstract' as *;
+
+
+.admission {
+    background-image: url('./../../img/banner-03.jpg');
+    background-image: -webkit-image-set(
+      url('./../../img/banner-03.jpg') 1x,
+      url('./../../img/banner-03@2x.jpg') 2x,
+      url('./../../img/banner-03@3x.jpg') 3x
+    );
+    background-image: image-set(
+      url('./../../img/banner-03.jpg') 1x,
+      url('./../../img/banner-03@2x.jpg') 2x,
+      url('./../../img/banner-03@3x.jpg') 3x
+    );
+    background-size: cover;
+    padding: 164px 0 140px 0;
+    color: #fff;
+  
+    &__inner{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 22px;
+    }
+  
+    h4 {
+      @include heading();
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      margin-bottom: 22px;
+    }
+  
+    &__links {
+      padding-top: 20px;
+      padding-bottom: 20px;
+  
+      a {
+        font-size: 14px;
+        @include text-medium();
+        padding: 22px 40px;
+        border: 1px solid #ffffff;
+        transition:  all ease .5s;
+
+        &:hover{
+          border:#fecc4e solid 1px;
+          color:#fecc4e;
+        }
+      }
+    }
+  }
+  
+  .student-magazine {
+    padding: 125px 0 90px 0;
+  
+    &__top {
+      background: linear-gradient(95.92deg, #f7f7f7 28.96%, #efefef 97.58%);
+      box-shadow: 0px 14px 40px rgba(0, 0, 0, 0.03);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      h3 {
+        @include heading();
+        font-size: 48px;
+        margin: 0;
+        line-height: 1;
+  
+        span {
+          display: block;
+          font-size: 14px;
+          @include text-medium();
+        }
+      }
+  
+      button {
+        @include text-medium();
+        font-size: 14px;
+        border: solid thin #000000;
+        padding: 22px 24px;
+        line-height: 1;
+        background-color: transparent;
+        transition: all ease .5s;
+
+      &:hover{
+        border: solid 1px #006699;
+        color: #006699;
+      }
+      }
+    }
+  
+    .partners {
+      // display: flex;
+      // justify-content: space-between;
+      margin-top: 97px;
+
+      img{
+        margin: 0 30px;
+      }
+    }
+  }
+
+footer {
+  background: #161616;
+  padding-top: 72px;
+  color: #fff;
+  @include text();
+  font-size: 14px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 35px;
+  border-bottom: 1px solid #FFFFFF;
+
+  .footer-links {
+    display: flex;
+    gap: 92px;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        line-height: 1;
+        margin-bottom: 30px;
+
+        
+        a{
+          color: #fff;
+          transition: color ease .5s;
+          
+          &:hover{
+          color: #fecc4e;
+        }}
+      }
+    }
+  }
+
+  .footer-contact {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .info {
+      display: grid;
+      gap: 20px;
+
+      img{
+          height: 16px;
+          width: 20px;
+      }
+
+      > div {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+        }
+      }
+    }
+  }
+
+  .footer-logo{
+      text-align: right;
+  }
+}
+
+.footer-bottom{
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 32px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+}

@@ -1,0 +1,270 @@
+@use 'sass:map';
+@use './../abstract' as *;
+
+.study {
+  color: #fff;
+
+  &-top {
+    background-image: url('./../../img/discover-courses.jpg');
+    background-image: -webkit-image-set(
+      url('./../../img/discover-courses.jpg') 1x,
+      url('./../../img/discover-courses@2x.jpg') 2x,
+      url('./../../img/discover-courses@3x.jpg') 3x
+    );
+    background-image: image-set(
+      url('./../../img/discover-courses.jpg') 1x,
+      url('./../../img/discover-courses@2x.jpg') 2x,
+      url('./../../img/discover-courses@3x.jpg') 3x
+    );
+    background-size: cover;
+    padding: 37px 0;
+
+    &__content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 42px;
+      border: 1px solid #ffffff;
+      position: relative;
+
+      svg {
+        animation: arrow 2s infinite;
+        -webkit-animation: arrow 2s infinite;
+        -moz-animation: arrow 2s infinite;
+        -o-animation: arrow 2s infinite;
+      }
+
+      span {
+        @include heading();
+        position: absolute;
+        right: 0;
+        top: 100%;
+        font-size: 20px;
+        line-height: 20px;
+        background: #fecc4e;
+        color: #000;
+        padding: 18px;
+        cursor: pointer;
+        transition: all ease .5s;
+
+        &:hover {
+          color: #fecc4e;
+          background: #000;
+        }
+      }
+
+      p {
+        @include heading();
+        font-size: 24px;
+        line-height: 36px;
+        margin: 0;
+      }
+    }
+  }
+
+  &-bottom {
+    padding: 100px 0 80px 0;
+    background: #006699;
+
+    &__cover {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &__left {
+      max-width: 435px;
+
+      h4 {
+        @include heading();
+        font-size: 28px;
+        line-height: 150%;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 40px;
+      }
+
+      a {
+        display: block;
+        background-color: transparent;
+        outline: none;
+        position: relative;
+
+        &:after {
+          content: url(./../../img/icons/white-arrow.svg);
+          position: absolute;
+          right: -8px;
+          top: 4px;
+        }
+
+        &:hover:after {
+          animation: arrow 2s infinite;
+          -webkit-animation: arrow 2s infinite;
+          -moz-animation: arrow 2s infinite;
+          -o-animation: arrow 2s infinite;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 40px;
+        }
+      }
+    }
+    &__right {
+      min-width: 472px;
+      padding: 50px 56px;
+      background: #0078b4;
+      position: relative;
+      margin-bottom: 120px;
+
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        width: 0;
+        height: 0;
+        border-left: 236px solid transparent;
+        border-right: 236px solid transparent;
+        border-top: 120px solid #0078b4;
+        clear: both;
+      }
+
+      &-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+          width: 33.6px;
+          height: 24px;
+          margin-bottom: 14px;
+        }
+
+        h4 {
+          @include heading();
+          font-size: 24px;
+          line-height: 24px;
+          margin-bottom: 47px;
+        }
+
+        select,
+        input {
+          width: 100%;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 17px;
+          background-color: transparent;
+          color: #fff;
+          border: 1px solid #ffffff;
+          padding: 21px;
+          transition: border ease 0.5s;
+          &:focus {
+            outline: none;
+            border: #fecc4e solid 1px;
+          }
+
+          &:hover {
+            outline: none;
+            border: #fecc4e solid 1px;
+          }
+        }
+
+        select {
+          margin-bottom: 30px;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          background-image: url(./../../img/icons/arrow-down.svg);
+          background-repeat: no-repeat;
+          background-position: right 20px center;
+
+          option {
+            color: #000;
+          }
+        }
+
+        input {
+          background-image: url(./../../img/icons/search-white.png);
+          background-repeat: no-repeat;
+          background-position: right 20px center;
+
+          &::placeholder {
+            /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: #fff;
+            opacity: 0.7; /* Firefox */
+          }
+
+          &:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: #fff;
+          }
+
+          &::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+.innovation {
+  padding: 125px 0 90px 0;
+
+  &__content {
+    border: 1px solid #e7e7e7;
+    box-sizing: border-box;
+    filter: drop-shadow(0px 14px 40px rgba(0, 0, 0, 0.03));
+    padding: 0 60px 0 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    div:nth-child(2) {
+      background-color: #fff;
+
+      img {
+        mix-blend-mode: luminosity;
+      }
+    }
+
+    h3 {
+      @include heading();
+      font-size: 48px;
+      margin: 0;
+      line-height: 1;
+
+      span {
+        display: block;
+        font-size: 14px;
+        @include text-medium();
+      }
+    }
+
+    button {
+      @include text-medium();
+      font-size: 14px;
+      border: solid thin #000000;
+      padding: 22px 24px;
+      line-height: 1;
+      background-color: transparent;
+      transition: all ease 0.5s;
+
+      &:hover {
+        border: solid 1px #006699;
+        color: #006699;
+      }
+    }
+  }
+
+  .partners {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 97px;
+  }
+}

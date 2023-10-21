@@ -1,0 +1,156 @@
+@use 'sass:map';
+@use './../abstract' as *;
+
+.congrats {
+  background: #fafafa;
+
+  &__inner {
+    display: flex;
+
+    h4 {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 17px;
+      text-transform: capitalize;
+      background: #fecc4e;
+      margin: 0;
+      padding: 52px 26px;
+    }
+  }
+
+  &__carousel {
+    flex-grow: 1;
+    position: relative;
+
+    &-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      top: 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-content: stretch;
+      align-items: center;
+    }
+
+    &-inner {
+      width: 100%;
+      order: 0;
+      flex: 0 1 auto;
+      align-self: center;
+    }
+
+    .congrats-item {
+      p {
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 17px;
+        padding: 0 64px;
+        margin-bottom: 0;
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all ease 0.5s;
+
+        &:hover {
+          color: #006699;
+          transform: scale(1.12);
+        }
+      }
+    }
+  }
+}
+
+.news {
+  padding: 102px 0 120px 0;
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+
+    h3 {
+      @include heading();
+      font-size: 24px;
+      line-height: 32px;
+    }
+
+    a {
+      font-size: 14px;
+      line-height: 17px;
+      display: inline-block;
+      position: relative;
+      @include text-medium();
+
+      &:hover {
+        color: #006699;
+      }
+
+      &:after {
+        content: '';
+        background-color: #006699;
+        height: 2px;
+        width: 0%;
+        position: absolute;
+        left: 0;
+        top: calc(100% + 2px);
+        transition: width 0.3s ease-in-out;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &_items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 46px;
+  }
+
+  &_item {
+    display: flex;
+    flex-direction: column;
+    transition: all ease 0.25s;
+    box-shadow: 1px 1px 12px transparent;
+    overflow: hidden;
+
+    img {
+      transform-origin: 50% 50%;
+      transition: all ease .25s;
+    }
+    
+    &:hover {
+      box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
+      
+      img {
+        transition: all ease 4s;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &_item__body {
+    padding: 25px 60px 40px 22px;
+    background: #fbfbfb;
+    flex-grow: 1;
+
+    .date {
+      display: block;
+      font-size: 12px;
+      line-height: 15px;
+      margin-bottom: 29px;
+    }
+
+    h4 {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 0;
+    }
+  }
+}
